@@ -17,7 +17,7 @@ export function ThemeToggle({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   const { setTheme } = useTheme();
-
+  
   return (
     <div className={className} {...props}>
       <DropdownMenu>

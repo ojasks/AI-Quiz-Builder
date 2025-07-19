@@ -1,6 +1,7 @@
 "use client";
 import { cn, formatTimeDelta } from "@/lib/utils";
-import { Game, Question } from "@prisma/client";
+import { prisma } from "@/lib/db";
+import type { Game , Question } from "@/generated/prisma";
 import { differenceInSeconds } from "date-fns";
 import { BarChart, ChevronRight, Loader2, Timer } from "lucide-react";
 import React from "react";
@@ -43,12 +44,13 @@ const OpenEnded = ({ game }: Props) => {
   });
   const { toast } = useToast();
   const [now, setNow] = React.useState(new Date());
-  const { mutate: checkAnswer, isLoading: isChecking } = useMutation({
+  const { mutate: checkAnswer, status } = useMutation({
     mutationFn: async () => {
       let filledAnswer = blankAnswer;
       document.querySelectorAll("#user-blank-input").forEach((input) => {
-        filledAnswer = filledAnswer.replace("_____", input.value);
-        input.value = "";
+        const inputEl = input as HTMLInputElement;
+  filledAnswer = filledAnswer.replace("_____", inputEl.value);
+  inputEl.value = "";
       });
       const payload: z.infer<typeof checkAnswerSchema> = {
         questionId: currentQuestion.id,
@@ -58,6 +60,7 @@ const OpenEnded = ({ game }: Props) => {
       return response.data;
     },
   });
+  const isChecking = status === "pending";
   React.useEffect(() => {
     if (!hasEnded) {
       const interval = setInterval(() => {

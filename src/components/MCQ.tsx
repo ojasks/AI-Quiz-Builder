@@ -1,5 +1,6 @@
 "use client";
-import { Game, Question } from "@prisma/client";
+import { prisma } from "@/lib/db";
+import type { Game,Question } from "@/generated/prisma";
 import React from "react";
 import {
   Card,
@@ -44,7 +45,7 @@ const MCQ = ({ game }: Props) => {
   }, [currentQuestion]);
 
   const { toast } = useToast();
-  const { mutate: checkAnswer, isLoading: isChecking } = useMutation({
+  const { mutate: checkAnswer, status} = useMutation({
     mutationFn: async () => {
       const payload: z.infer<typeof checkAnswerSchema> = {
         questionId: currentQuestion.id,
@@ -54,6 +55,7 @@ const MCQ = ({ game }: Props) => {
       return response.data;
     },
   });
+  const isChecking = status === "pending";
 
   const { mutate: endGame } = useMutation({
     mutationFn: async () => {
@@ -85,7 +87,7 @@ const MCQ = ({ game }: Props) => {
           toast({
             title: "Correct",
             description: "You got it right!",
-            variant: "success",
+            variant: "default",
           });
         } else {
           setStats((stats) => ({

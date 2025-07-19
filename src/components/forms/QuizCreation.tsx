@@ -41,12 +41,13 @@ const QuizCreation = ({ topic: topicParam }: Props) => {
   const [showLoader, setShowLoader] = React.useState(false);
   const [finishedLoading, setFinishedLoading] = React.useState(false);
   const { toast } = useToast();
-  const { mutate: getQuestions, isLoading } = useMutation({
+  const { mutate: getQuestions, status } = useMutation({
     mutationFn: async ({ amount, topic, type }: Input) => {
       const response = await axios.post("/api/game", { amount, topic, type });
       return response.data;
     },
   });
+const isLoading = status === "pending";
 
   const form = useForm<Input>({
     resolver: zodResolver(quizCreationSchema),

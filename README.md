@@ -1,37 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 AI Quiz Builder - QuizGenie
 
-## Getting Started
+<img width="1536" height="1024" alt="AI_quiz_builder" src="https://github.com/user-attachments/assets/3e81efcf-d9d7-41ec-ae21-0b32eb6ccea9" />
 
-First, run the development server:
+
+**QuizGenie** is a smart quiz generation platform built with **Next.js 14 App Router**. It lets educators and content creators generate quizzes in real-time using AI, making interactive learning sessions seamless, fast, and dynamic.
+
+This project was bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+---
+
+## 🚀 Features
+
+- 🔮 **AI-Powered Quiz Generation** - Enter a topic or paste content and get a quiz instantly
+- 🧩 **Multiple Question Types** - MCQs, True/False, Fill-in-the-blanks and more
+- ⚡ **Live Leaderboards** - Engage your audience with real-time competition(in progress...)
+- 👥 **Multiplayer Support** - Participants can join from their devices and play simultaneously(in progress...)
+- 📊 **Detailed Analytics** - Track performance per question and per user
+- 🎨 **Retro Terminal UI** - Unique, nostalgic terminal-style design
+
+---
+
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 14](https://nextjs.org)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Backend**: Node.js (API routes in Next.js)
+- **Authentication**: Context API (local auth)
+- **AI Integration**: OpenAI API ( not included in this repo)
+- **Deployment**: [Vercel](https://vercel.com)
+
+---
+
+## 🧰 Getting Started
+
+Clone the repository:
 
 ```bash
-npm run dev
+git clone https://github.com/yourusername/quizgenie.git
+cd quizgenie
+
+
+Install dependencies:
+
+npm install
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+yarn install
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3000
 
-## Learn More
+🗂️ Project Structure (App Router)
 
-To learn more about Next.js, take a look at the following resources:
+app/
+├── layout.tsx
+├── page.tsx
+├── login/
+├── home/
+├── quiz/
+├── leaderboard/
+components/
+context/
+lib/
+public/
+styles/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# AI-Quiz-Builder

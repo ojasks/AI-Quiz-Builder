@@ -50,7 +50,6 @@ yarn install
 
 
 
-3000
 
 🗂️ Project Structure (App Router)
 
@@ -66,4 +65,6 @@ context/
 lib/
 public/
 styles/
+
+
 
